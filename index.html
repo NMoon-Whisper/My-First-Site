@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My First Site - LIVE!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+    
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px 60px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.2);
+      animation: float 6s ease-in-out infinite;
+    }
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ff6ec4, #7873f5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p { font-size: 1.3rem; margin: 10px 0; opacity: 0.9; }
+    .btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      background: #ff6ec4;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255,110,196,0.4);
+      transition: all 0.3s;
+    }
+    .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255,110,196,0.6); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .sparkle {
+      position: absolute;
+      color: #fff;
+      font-size: 2rem;
+      pointer-events: none;
+      animation: sparkle 2s linear forwards;
+    }
+    @keyframes sparkle {
+      0% { opacity: 1; transform: scale(0) rotate(0); }
+      100% { opacity: 0; transform: scale(1) rotate(180deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>I DID IT!</h1>
+    <p>My first website is <strong>LIVE</strong> on the internet!</p>
+    <p>Made with ❤️ by <em>YOU</em> in under 10 minutes</p>
+    <button class="btn" onclick="celebrate()">Click for Magic!</button>
+  </div>
+
+  <script>
+    function celebrate() {
+      const sparks = ['✨', '🎉', '🚀', '🌟', '💥'];
+      for(let i=0; i<30; i++) {
+        const s = document.createElement('div');
+        s.className = 'sparkle';
+        s.innerText = sparks[Math.floor(Math.random()*sparks.length)];
+        s.style.left = Math.random()*100 + 'vw';
+        s.style.top = Math.random()*100 + 'vh';
+        s.style.animationDelay = Math.random()*1 + 's';
+        document.body.appendChild(s);
+        setTimeout(()=>s.remove(), 2000);
+      }
+    }
+    // Auto-celebrate on load
+    setTimeout(celebrate, 500);
+  </script>
+</body>
+</html>
