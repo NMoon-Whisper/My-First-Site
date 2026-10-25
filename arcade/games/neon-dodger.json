@@ -1,0 +1,14 @@
+{
+  "id": "neon-dodger",
+  "title": "Neon Dodger",
+  "developer": "Pixel Vault (original project contribution)",
+  "year": 2026,
+  "genre": "Arcade / action",
+  "players": 1,
+  "system": "Browser Canvas (not an emulated console)",
+  "license": "CC0-1.0",
+  "sourceUrl": "https://github.com/NMoon-Whisper/My-First-Site/tree/feat/legal-arcade-section/arcade",
+  "attribution": "Original gameplay, visuals, and source code authored for this repository. No third-party game assets or ROMs included.",
+  "redistribution": "May be copied, modified, and redistributed under CC0-1.0.",
+  "notes": "Original canvas game; not a third-party arcade ROM and does not require BIOS."
+}
