@@ -1,5 +1,5 @@
 'use strict';
-const catalog=[{id:'neon-dodger',title:'Neon Dodger',developer:'Pixel Vault (original)',year:2026,genre:'Arcade',players:1,license:'CC0-1.0',source:'./games/neon-dodger.json',attribution:'Original game created for this project.',description:'Dodge falling neon blocks in a fast original canvas arcade game.',system:'Browser Canvas',art:'🟩'}];
+const catalog=[{id:'neon-dodger',title:'Neon Dodger',developer:'Pixel Vault (original)',year:2026,genre:'Arcade',players:1,license:'CC0-1.0',source:'./games/neon-dodger.json',sourceUrl:'https://github.com/NMoon-Whisper/My-First-Site/tree/feat/legal-arcade-section/arcade',attribution:'Original game created for this project.',description:'Dodge falling neon blocks in a fast original canvas arcade game.',system:'Browser Canvas',art:'🟩'}];
 const $=id=>document.getElementById(id);
 const get=(k,fallback)=>{try{return JSON.parse(localStorage.getItem('pv:'+k))??fallback}catch{return fallback}};
 const set=(k,v)=>{try{localStorage.setItem('pv:'+k,JSON.stringify(v))}catch{}};
@@ -18,10 +18,10 @@ function render(){
   const desc=document.createElement('p');desc.textContent=game.description;
   const meta=document.createElement('p');meta.className='muted';meta.textContent=game.system+' · '+game.genre+' · '+game.players+' player · '+game.year;
   const badge=document.createElement('span');badge.className='tag';badge.textContent=game.license+' · license';
-  const source=document.createElement('a');source.href=game.source;source.textContent='Provenance & attribution';source.style.color='var(--lime)';source.style.display='inline-block';source.style.margin='6px 0';
+  const sourceBadge=document.createElement('span');sourceBadge.className='tag';sourceBadge.textContent='Source documented';const source=document.createElement('a');source.href=game.sourceUrl;source.target='_blank';source.rel='noopener noreferrer';source.textContent=game.sourceUrl;source.style.color='var(--lime)';source.style.display='inline-block';source.style.overflowWrap='anywhere';source.style.margin='6px 0';const attribution=document.createElement('p');attribution.className='muted';attribution.textContent='Attribution: '+game.attribution;
   const favBtn=document.createElement('button');favBtn.textContent=fav.has(game.id)?'★ Favorited':'☆ Favorite';favBtn.setAttribute('aria-pressed',String(fav.has(game.id)));favBtn.onclick=()=>{const f=new Set(get('favorites',[]));f.has(game.id)?f.delete(game.id):f.add(game.id);set('favorites',[...f]);render()};
   const play=document.createElement('button');play.className='primary';play.textContent='Play now';play.onclick=()=>{ $('playingTitle').textContent=game.title;$('playPanel').scrollIntoView({behavior:'smooth'});startGame();set('recent',[game.id,...get('recent',[]).filter(id=>id!==game.id)].slice(0,12));};
-  card.append(art,title,desc,meta,badge,document.createElement('br'),source,document.createElement('br'),favBtn,play);root.append(card)
+  card.append(art,title,desc,meta,badge,sourceBadge,document.createElement('br'),source,attribution,favBtn,play);root.append(card)
  }
 }
 $('search').addEventListener('input',render);$('genre').addEventListener('change',render);$('players').addEventListener('change',render);$('year').addEventListener('change',render);
