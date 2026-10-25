@@ -1,0 +1,27 @@
+{
+  "required": [
+    "id",
+    "title",
+    "developer",
+    "year",
+    "genre",
+    "players",
+    "license",
+    "sourceUrl",
+    "attribution",
+    "redistributionEvidence"
+  ],
+  "properties": {
+    "id": "string",
+    "title": "string",
+    "developer": "string",
+    "year": "number",
+    "genre": "string",
+    "players": "number",
+    "license": "SPDX identifier or explicit permission",
+    "sourceUrl": "canonical rights-holder/source URL",
+    "attribution": "required attribution statement",
+    "redistributionEvidence": "documented permission to redistribute",
+    "sha256": "SHA-256 for each distributed asset where applicable"
+  }
+}
